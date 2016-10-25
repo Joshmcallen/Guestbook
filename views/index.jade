@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+form#formAddUser(name="adduser",method="post",action="/adduser")
+    input#inputUserName(type="text", placeholder="username", name="username")
+    input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
+    input#inputUserEmail(type="text", placeholder="usermessage", name="usermessage")
+    button#btnSubmit(type="submit") submit
+
+table
+  thead
+    td
+      username
+    td
+      usermessage
+    td  
+      useremail
+
+    each user, i in userlist
+      tr
+        td
+          =user.username
+        td
+          a(href="mailto:#{user.email}")= user.username
+        td
+        =user.message
