@@ -61,6 +61,21 @@ router.post('/adduser', function(req, res) {
     });
 });
 
+//Direct to specific user page
+router.get('/view/:username', function (req, res){
+  var username = req.params.username;
+  var db = req.db;
+  var collection = db.get('usercollection');
+  collection.find({"username": username}, (e, doc) => {
+    res.render('user', {
+      name: doc[0].username,
+      email: doc[0].email,
+      message: doc[0].message
+    });
+  });
+});
+
+
 //remove entry
 router.get('/:id', function(req,res){
 
@@ -73,6 +88,8 @@ router.get('/:id', function(req,res){
 	res.redirect("/");
 
 });
+
+
 
 
 module.exports = router;

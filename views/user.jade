@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 test user.jade
+
+
+  table
+    thead
+      td  Name
+      td  Email
+      td  Message
+      td
+    tbody
+        tr
+          td
+            a(href="/view/#{name}")=name
+          td
+            =message
+          td
+            =email

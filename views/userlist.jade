@@ -14,11 +14,11 @@ block content
       each user, i in userlist
         tr
           td
-            a(href="#{user.username}")= user.username
+            a(href="/view/#{user.username}")= user.username
           td
-            a(href="mailto:#{user.email}")= user.email
+            =user.email
           td
             =user.message
           td
-            a(href="#{user._id}")
-              button delete
+            a(href="/#{user._id}")
+              button.btn.btn-danger(type='button') DELETE
