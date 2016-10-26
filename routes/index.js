@@ -1,20 +1,18 @@
 var express = require('express');
+var ObjectID = require('mongodb').ObjectID;
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   var db = req.db;
   var collection = db.get('usercollection');
   collection.find({},{},function(e,docs){
-      res.render('userlist', {
+      res.render('index', {
           "userlist" : docs
       });
   });
 });
-/* GET Hello World page. */
-router.get('/helloworld', function(req, res) {
-    res.render('helloworld', { title: 'Hello, World!' });
-});
+
 
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
@@ -48,8 +46,8 @@ router.post('/adduser', function(req, res) {
 
     // Submit to the DB
     collection.insert({
-        "username" : userName,
-        "email" : userEmail,
+        "username": userName,
+        "email": userEmail,
         "message": userMessage
     }, function (err, doc) {
         if (err) {
@@ -58,17 +56,23 @@ router.post('/adduser', function(req, res) {
         }
         else {
             // And forward to success page
-            res.redirect("userlist");
+            res.redirect("/");
         }
     });
 });
 
+//remove entry
+router.get('/:id', function(req,res){
 
+	var id = req.params.id;
+	var objectId = new ObjectID(id);
+	var db = req.db;
+	var collection = db.get('usercollection');
+	console.log(collection);
+	collection.remove({_id: objectId});
+	res.redirect("/");
 
-
-
-
-
+});
 
 
 module.exports = router;
