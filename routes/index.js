@@ -2,32 +2,55 @@ var express = require('express');
 var ObjectID = require('mongodb').ObjectID;
 var router = express.Router();
 
-/* GET home page. */
+//////////////////////////////AUTH0///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+var passport = require('passport');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
+
+var env = {
+  AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
+  AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+  AUTH0_CALLBACK_URL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+};
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+
 router.get('/', function(req, res) {
-  var db = req.db;
-  var collection = db.get('usercollection');
-  collection.find({},{},function(e,docs){
-      res.render('index', {
-          "userlist" : docs
-      });
-  });
+  res.render('index', {title:'index'});
+});
+////////////////////AUTH0////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+router.get('/login',
+  function(req, res){
+    res.render('login', { env: env });
 });
 
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
-/* GET Userlist page. */
-router.get('/userlist', function(req, res) {
+router.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/url-if-something-fails' }),
+  function(req, res) {
+    res.redirect(req.session.returnTo || '/guestbook');
+  });
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+/* GET Guestbook page. */
+router.get('/guestbook', ensureLoggedIn, function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
     collection.find({},{},function(e,docs){
-        res.render('userlist', {
+        res.render('guestbook', {
             "userlist" : docs
         });
     });
-});
-
-/* GET New User page. */
-router.get('/newuser', function(req, res) {
-    res.render('newuser', { title: 'Add New User' });
 });
 
 /* POST to Add User Service */
@@ -56,7 +79,7 @@ router.post('/adduser', function(req, res) {
         }
         else {
             // And forward to success page
-            res.redirect("/");
+            res.redirect("/guestbook");
         }
     });
 });
@@ -66,7 +89,7 @@ router.get('/view/:username', function (req, res){
   var username = req.params.username;
   var db = req.db;
   var collection = db.get('usercollection');
-  collection.find({"username": username}, (e, doc) => {
+  collection.find({"username": username}, function(e, doc) {
     res.render('user', {
       name: doc[0].username,
       email: doc[0].email,
@@ -74,7 +97,6 @@ router.get('/view/:username', function (req, res){
     });
   });
 });
-
 
 //remove entry
 router.get('/:id', function(req,res){
@@ -85,7 +107,7 @@ router.get('/:id', function(req,res){
 	var collection = db.get('usercollection');
 	console.log(collection);
 	collection.remove({_id: objectId});
-	res.redirect("/");
+	res.redirect("/guestbook");
 
 });
 

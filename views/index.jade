@@ -1,30 +1,9 @@
 extends layout
 
 block content
-  h1  Guestbook
-  p Sign in!
+    h1 Guestbook
 
-  form#formAddUser(name="adduser",method="post",action="/adduser")
-      input#inputUserName(type="text", placeholder="username", name="username")
-      input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
-      input#inputUserMessage(type="text", placeholder="usermessage", name="usermessage")
-      button#btnSubmit(type="submit") submit
 
-  table
-    thead
-      td  Name
-      td  Email
-      td  Message
-      td
-    tbody
-      each user, i in userlist
-        tr
-          td
-            a(href="/view/#{user.username}")= user.username
-          td
-            =user.email
-          td
-            =user.message
-          td
-            a(href="/#{user._id}")
-              button.btn.btn-danger(type='button') DELETE
+    center
+      a.btn.btn-success.btn-lg(href='/login', role='button') Enter
+      h1
