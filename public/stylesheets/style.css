@@ -2,16 +2,22 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /*background-color: #00EAB4;*/
-  /*background-image: url("http://bit.ly/2dKbCa9");
-  background-size: cover;*/
+  /*background-image: url("https://wallpaperscraft.com/image/board_black_line_texture_background_wood_55220_2560x1600.jpg");*/
+  /*background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/08/Free-Chalkboard-Backgrounds.jpg");*/
+  /*background-image: url("https://s-media-cache-ak0.pinimg.com/originals/77/f4/a8/77f4a8206ee857de9ce58834f5801aaa.jpg");*/
+  /*background-image: url("http://www.expoluzrd.com/ori/www.colehardware.com/wp-content/themes/cole/images/corkboard-background.jpg");*/
+
+  background-image: url('/images/background.jpeg');
+  background-size: cover;
+  color: white !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/*h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin: 0 auto;
   padding-bottom: 1em;
 
-}
+}*/
 /*p {
   text-align: center;
   margin: 1em auto;
@@ -26,17 +32,17 @@ form {
 /*form styling*/
 #formAddUser {
 max-width: 35em;
-margin: 15em auto;
+margin: 0 auto;
 }
 
-#addButton {
-width: 35em;
+/*#addButton {*/
+/*width: 35em;*/
 /*max-width: 35em;*/
-font-weight: bold;
+/*font-weight: bold;*/
 /*background-color: blue;
 border-color: blue;*/
 
-}
+/*}*/
 
 #inputUserMessage {
 padding-top: 2em;
@@ -50,66 +56,115 @@ text-align: center;
 
 
 
-#deleteButton {
+/*#deleteButton {
 background-color: #DBBA9B;
 border-color: #DBBA9B;
 
-}
+}*/
 
-#deleteButton:hover {
+/*#deleteButton:hover {
   /*box-shadow: 0px 0px 10px black;*/
-  background-color: #907861;
+  /*background-color: #907861;
   border-color: #907861;
 
-}
+}*/
 
 
-a {
+/*a {
   color: #DBBA9B;
   text-decoration: underline;
 
-}
-a:hover {
+}*/
+/*a:hover {
   color: #665555;
   font-weight: bold;
 
-}
+}*/
 
-thead {
+/*thead {
   font-weight: bold;
   font-size: 20px
-}
+}*/
 
-td {
+/*td {
   color: #DBBA9B;
   padding-top: 2em;
   padding-right: 7.5em;
   text-align: center;
 
-}
-table {
+}*/
+/*table {*/
   /*color: #BCC1C7;*/
-  background: rgba(0,0,0,0.5);
+  /*background: rgba(0,0,0,0.5);*/
   /*background-color: #4D00B2;*/
-  margin-top
-  width: 50%;
+  /*margin-top*/
+  /*width: 50%;*/
 
-}
+/*}*/
 
-tr {
+/*tr {
     background-color: rgba(0,0,0,0.5);
-}
+}*/
 
-tr:hover {
+/*tr:hover {
   background-color: rgba(0,0,0,0.5);
 
-}
+}*/
 
-#french {
-  margin: 10em auto;
+/*#french {
+  margin: 10em auto;*/
   /*color: #665555;*/
+/*}*/
+
+/*.btn-success {
+  text-decoration: none;
+}*/
+
+p {
+  margin-top: 3em;
 }
 
-.btn-success {
+.guestbox {
+  width: 250px;
+  height: 250px;
+  /*background-color: black !important;*/
+  /*background-image: url("http://img14.deviantart.net/10ee/i/2012/359/e/3/paper_background_by_stickdudeseven-d5p5fts.jpg");*/
+  /*background-image: url("https://s-media-cache-ak0.pinimg.com/originals/77/f4/a8/77f4a8206ee857de9ce58834f5801aaa.jpg");*/
+  background-image: url("http://www.clipartbest.com/cliparts/dc8/deo/dc8deozce.png");
+  background-size: cover;
+  /*opacity: .8;*/
+  margin-left: 1.5em;
+  margin-top: 2em;
+  /*color: #DBBA9B;*/
+  color: black !important;
+  border-radius: 2%;
+}
+
+
+/*navbar*/
+.navbar {
+  background-color: #2e0808;
+  padding: 2em;
+  margin-bottom: 0px;
+  margin-top: -4em;
+  width: 100%;
+  float: left;
+  opacity: .2;
+  /*margin: 0 0 1em 0;*/
+}
+.navbar a {
+  font-size: 24px;
+  color: white;
+  /*opacity: .6;*/
+  /*background-color: black;*/
   text-decoration: none;
+  padding: .5em;
+  margin-right: 1em;
+  float: right;
+}
+.navbar a:hover {
+  color: red;
+  background-color: white;
+  box-shadow: 0px 0px 10px #000;
+/*   line-height: 2em; */
 }

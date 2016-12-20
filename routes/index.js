@@ -46,13 +46,13 @@ router.get('/callback',
 router.get('/guestbook', ensureLoggedIn, function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
-    collection.find({},{},function(e,docs){
+    collection.find({},{sort: {date: -1} },function(e,docs){
         res.render('guestbook', {
             "userlist" : docs
         });
     });
 });
-
+// articles.find({"category": "News"}, {sort: {articleDate: -1} }, function(e, articles) {
 /* POST to Add User Service */
 router.post('/adduser', function(req, res) {
 
@@ -63,6 +63,7 @@ router.post('/adduser', function(req, res) {
     var userName = req.body.username;
     var userEmail = req.body.useremail;
     var userMessage = req.body.usermessage;
+    var date = Date();
 
     // Set our collection
     var collection = db.get('usercollection');
@@ -71,7 +72,8 @@ router.post('/adduser', function(req, res) {
     collection.insert({
         "username": userName,
         "email": userEmail,
-        "message": userMessage
+        "message": userMessage,
+        "date": date
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
