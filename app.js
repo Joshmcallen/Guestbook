@@ -1,3 +1,6 @@
+var dotenv = require('dotenv');
+if (process.env.ENVIROMENT !== 'production') require('dotenv').config();
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,7 +9,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var session = require('express-session');
-var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 
@@ -17,7 +19,9 @@ dotenv.load();
 ////////////////////////////////////////////////////////////////
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/guestbook');
+const MLAB_URI = process.env.MLAB_URI;
+var db = monk(MLAB_URI);
+// var db = monk('localhost:27017/guestbook');
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
