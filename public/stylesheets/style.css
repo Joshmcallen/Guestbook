@@ -12,6 +12,10 @@ body {
   color: white !important;
 }
 
+h3, h4, h5, h1, h2 {
+  font-family: monospace;
+}
+
 /*h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin: 0 auto;
@@ -128,9 +132,11 @@ p {
   width: 250px;
   height: 250px;
   /*background-color: black !important;*/
-  /*background-image: url("http://img14.deviantart.net/10ee/i/2012/359/e/3/paper_background_by_stickdudeseven-d5p5fts.jpg");*/
+  background-image: url("http://img14.deviantart.net/10ee/i/2012/359/e/3/paper_background_by_stickdudeseven-d5p5fts.jpg");
   /*background-image: url("https://s-media-cache-ak0.pinimg.com/originals/77/f4/a8/77f4a8206ee857de9ce58834f5801aaa.jpg");*/
-  background-image: url("http://www.clipartbest.com/cliparts/dc8/deo/dc8deozce.png");
+  /*background-image: url("http://www.clipartbest.com/cliparts/dc8/deo/dc8deozce.png");*/
+  /*background-image: url("http://img08.deviantart.net/8881/i/2011/090/f/e/polaroid_frame_psd_by_clarearies13-d3cvrnr.jpg");*/
+
   background-size: cover;
   /*opacity: .8;*/
   margin-left: 1.5em;
@@ -167,4 +173,21 @@ p {
   background-color: white;
   box-shadow: 0px 0px 10px #000;
 /*   line-height: 2em; */
+}
+
+
+#logo {
+  margin-top: 12em;
+}
+
+.btn-success {
+  background-color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  color: black !important;
+}
+
+.btn-danger {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  color: white !important;
 }

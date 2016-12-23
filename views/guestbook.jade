@@ -1,6 +1,11 @@
 extends layout
 
+
 block content
+
+    nav.navbar
+      a(href='/logout') Logout
+
     center
       h1 
         strong Welcome to My Guestbook!
@@ -13,42 +18,20 @@ block content
     
     form#formAddUser(name="adduser",method="post",action="/adduser")
         input#inputUserName.form-control(type="text", placeholder="What's your name?", name="username")
-        //- input#inputUserEmail.form-control(type='text', placeholder='Got an email?', name='useremail')
         input#inputUserMessage.form-control(type='text', placeholder='Say something!', name="usermessage")
         button.form-control.btn.btn-danger(type="submit") Post Message
 
-    //- table#french.table.table-hover.table-inverse
-    //-   thead
-    //-     td  Name
-    //-     td  Email
-    //-     td  Message
-    //-     td
-    //-   tbody
-    //-     each user, i in userlist
-    //-       tr
-    //-         td
-    //-           a(href="/view/#{user.username}")=user.username
-    //-         td
-    //-           =user.email
-    //-         td
-    //-           =user.message
-    //-         td
-    //-           a(href="/#{user._id}")
-    //-             button#deleteButton.btn.btn-danger(type='button') Remove Entry
-
+    
     .container
       .row
         each user, i in userlist
-          a(href='/')
-            .col-md-3.guestbox
-              p
-                strong #{user.username}
-              p 
-                =user.message
-              
-    //-           
-    //- form#formAddUser(name="adduser",method="post",action="/adduser")
-    //-     input#inputUserName.form-control(type="text", placeholder="What's your name?", name="username")
-    //-     //- input#inputUserEmail.form-control(type='text', placeholder='Got an email?', name='useremail')
-    //-     input#inputUserMessage.form-control(type='text', placeholder='Say something!', name="usermessage")
-    //-     button.form-control.btn.btn-danger(type="submit") Create Log
+          .col-md-3.guestbox
+            
+            p
+            p
+            h3
+              strong #{user.username}
+            p
+            h4 
+              =user.message
+    
